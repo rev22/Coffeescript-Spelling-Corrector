@@ -14,9 +14,9 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'.split ""
 edits1 = (word) ->
     s 					= ([word.substring(0, i), word.substring(i)] for i in [0..word.length])
     deletes 		= (a.concat b[1..] for [a, b] in s when b.length > 0)
-    transposes  = (a + b[1] + b[0] + b.substring(2) for [a, b] in s when b.length > 1)
-    replaces 		= (a + c + b.substring(1)  for c in alphabet for [a, b] in s when b.length > 0)
-    inserts 		= (a + c + b  						 for c in alphabet for [a, b] in s)
+    transposes  = (a + b[1] + b[0] + b[2..] for [a, b] in s when b.length > 1)
+    replaces 		= (a + c + b[1..]  for c in alphabet for [a, b] in s when b.length > 0)
+    inserts 		= (a + c + b  		 for c in alphabet for [a, b] in s)
     deletes.concat transposes.concat replaces.flat().concat inserts.flat()
 
 known_edits2 = (word) -> ((e2 for e2 in edits1 e1 when NWORDS[e2]? for e1 in edits1 word).flat())
