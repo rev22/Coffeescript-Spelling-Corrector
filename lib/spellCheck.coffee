@@ -225,8 +225,7 @@ inOut =
     'initals': 'initials'
     'intials': 'initials'
 
-eq = (x, y) -> `x == y`
 for input, expected of inOut
     result = correct(input)
-    feedback = if eq(result, expected) then "ok" else "FAIL! (should be #{expected})"
+    feedback = if expected is result then "ok" else "FAIL! (should be #{expected})"
     console.log "#{input} -> #{result} #{feedback}"
