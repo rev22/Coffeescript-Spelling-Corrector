@@ -3,7 +3,7 @@ Array::or = (arrayFunc) -> if @length > 0 then @ else arrayFunc()
 Array::flat = -> if @length == 0 then @ else @[0].concat(@[1..].flat())
 train = (features) ->
     model = {}
-    (model[f] = if model[f] then model[f] +1 else 2) for f in features
+    (model[f] = if model[f] then model[f] + 1 else 2) for f in features
     return model
 NWORDS = train(words(require('fs').readFileSync('./lib/big.txt', 'utf8')))
 alphabet = 'abcdefghijklmnopqrstuvwxyz'.split ""

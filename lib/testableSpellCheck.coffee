@@ -6,7 +6,7 @@ Array::flat = -> if @length == 0 then @ else @[0].concat(@[1..].flat())
 
 global.train = (features) ->
     model = {}
-    (model[f] = if model[f] then model[f] +1 else 2) for f in features
+    (model[f] = if model[f] then model[f] + 1 else 2) for f in features
     return model
 
 # global.NWORDS = train(words(require('fs').readFileSync('./lib/big.txt', 'utf8')))
